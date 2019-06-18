@@ -22,7 +22,7 @@ class UsersLoginTest < ActionDispatch::IntegrationTest
     assert_template 'sessions/new'
     post login_path, params: { session: { email: @user.email, 
                                           password: 'password' } }
-                                          assert_redirected_to @user
+    assert_redirected_to @user
     assert is_logged_in?
     follow_redirect!
     assert_template 'users/show'
