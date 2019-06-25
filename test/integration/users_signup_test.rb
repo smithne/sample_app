@@ -23,11 +23,12 @@ class UsersSignupTest < ActionDispatch::IntegrationTest
                                         password: 'foobarrr',
                                         password_confirmation: 'foobarrr' } }
     end
+    #follow_redirect!
+    # assert_template 'users/show' # users redirected to root due to activation
+    assert_redirected_to root_url
     follow_redirect!
-    assert_template 'users/show'
-    assert_select '.alert'
-    assert_select '.alert-success'
-    assert is_logged_in?
+    assert_select ".alert-info"
+    #assert is_logged_in?
   end
 
 end
